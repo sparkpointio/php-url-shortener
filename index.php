@@ -33,7 +33,7 @@ if (isset($_GET['slug'])) {
                     $db->query('UPDATE redirect SET hits = hits + 1 WHERE slug = "' . $escapedSlug . '"');
                     $url = $redirectResult->fetch_object()->url;
                 } else {
-                    $url = DEFAULT_URL . $_SERVER['REQUEST_URI'];
+                    $url = DEFAULT_URL;
                 }
 
                 $db->close();
@@ -50,4 +50,4 @@ $attributeValue = htmlspecialchars($url);
         http-equiv=refresh
         content="0;URL=<?php echo $attributeValue; ?>"
 ><a href="<?php echo $attributeValue; ?>">Continue</a>
-<script>location.href =<?php echo json_encode($url, JSON_HEX_TAG | JSON_UNESCAPED_SLASHES); ?></script>
+<script>location.href =<?php echo json_encode($url, JSON_HEX_TAG | JSON_UNESCAPED_SLASHES); ?>;</script>
